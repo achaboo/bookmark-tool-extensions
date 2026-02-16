@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookmark Workbench</title>
+    <link rel="stylesheet" href="bookmarks.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar" aria-label="操作メニュー">
+        <button id="reloadBtn" type="button">🔄 再読み込み</button>
+        <button id="addUrlBtn" type="button">＋ URL追加</button>
+        <button id="addFolderBtn" type="button">📁 フォルダ追加</button>
+        <button id="searchToggle" type="button">🔍 検索</button>
+        <div class="status" id="status" aria-live="polite">読み込み中…</div>
+      </header>
+
+      <div id="searchBar" class="search-bar hidden">
+        <input id="searchInput" type="text" placeholder="ブックマーク名またはURLで検索…" aria-label="検索" />
+        <span id="searchCount" class="search-count"></span>
+        <button id="searchClear" type="button">✕</button>
+      </div>
+
+      <div class="main">
+        <section class="left" aria-label="ブックマークツリー">
+          <div class="info-bar" id="infoBar">
+            Chromeのブックマークを直接編集できます。変更は即座に反映されます。
+          </div>
+          <div class="tree-wrap" id="treeWrap" role="tree" aria-label="ブックマーク一覧">
+            <div class="tree-spacer" id="treeSpacer"></div>
+          </div>
+        </section>
+
+        <section class="right" aria-label="詳細">
+          <div id="detailPanel" class="detail-panel">
+            <div class="detail-empty" id="detailEmpty">
+              <div class="detail-empty-icon">📑</div>
+              <p>ブックマークを選択すると詳細が表示されます</p>
+            </div>
+            <div class="detail-content hidden" id="detailContent">
+              <div class="detail-header">
+                <img id="detailFavicon" class="detail-fav" alt="" />
+                <div>
+                  <div class="detail-title" id="detailTitle"></div>
+                  <div class="detail-type" id="detailType"></div>
+                </div>
+              </div>
+              <div class="detail-fields">
+                <label class="detail-label">名前</label>
+                <div class="detail-input-row">
+                  <input id="detailName" type="text" class="detail-input" />
+                  <button id="detailNameSave" type="button" class="detail-save-btn">保存</button>
+                </div>
+                <div id="detailUrlSection">
+                  <label class="detail-label">URL</label>
+                  <div class="detail-input-row">
+                    <input id="detailUrl" type="url" class="detail-input" />
+                    <button id="detailUrlSave" type="button" class="detail-save-btn">保存</button>
+                  </div>
+                  <div class="detail-actions">
+                    <button id="detailOpen" type="button" class="detail-action-btn">🔗 新規タブで開く</button>
+                  </div>
+                </div>
+                <div class="detail-meta">
+                  <div id="detailId" class="detail-meta-item"></div>
+                  <div id="detailDate" class="detail-meta-item"></div>
+                  <div id="detailChildCount" class="detail-meta-item"></div>
+                  <div id="detailPath" class="detail-meta-item"></div>
+                </div>
+              </div>
+              <div class="detail-danger-zone">
+                <button id="detailDelete" type="button" class="detail-delete-btn">🗑 削除</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div id="ctx" class="ctx" role="menu" aria-label="項目メニュー"></div>
+
+    <script src="bookmarks.js"></script>
+  </body>
+</html>
