@@ -1,0 +1,24 @@
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 環境変数
+.env
+.env.local
+.env*.local
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Claude Code ローカル設定
+.claude/
+
+# 学習メモ・タスク
+tasks/
